@@ -3,17 +3,26 @@ import {
     ResizablePanel,
     ResizablePanelGroup,
 } from "@/components/ui/resizable"
+import { NotionRenderer } from "@/components/NotionRender"
+import { NotionAPI } from 'notion-client'
 
-export default function CodeSection() {
+const api = new NotionAPI()
+
+export default async function CodeSection() {
+    // fetch the data for a specific page
+    const page = await api.getPage(
+        '2565257ddd2d44d59148c2598488e31e',
+        // '1e2ea744a84e431e906d292a3a49b420'
+    )
     return (
         <>
             <ResizablePanelGroup
                 direction="horizontal"
                 className="rounded-lg border"
             >
-                <ResizablePanel defaultSize={50}>
-                    <div className="flex h-[200px] items-center justify-center p-6">
-                        <span className="font-semibold text-primary">One</span>
+                <ResizablePanel className="overflow-y-scroll" defaultSize={50}>
+                    <div className="h-full p-5 overflow-y-auto">
+                        {page && <NotionRenderer recordMap={page} />}
                     </div>
                 </ResizablePanel>
                 <ResizableHandle />
