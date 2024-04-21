@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Bricolage_Grotesque as FontSans } from "next/font/google"
 import "./globals.css";
 import { cn } from "@/lib/utils"
 import Navbar from "@/components/Navbar";
@@ -24,13 +25,20 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "dark min-h-screen bg-background font-sans antialiased",
+          "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -4,10 +4,10 @@ import { SITE_CONFIG } from '@/config/site'
 
 export default function Footer() {
     return (
-        <footer className="flex flex-col justify-center items-center p-10 text-primary  border-t-2 border-gray-800">
+        <footer className="flex flex-col justify-center items-center p-10 text-primary  border-t border-gray-800">
             <div className='flex flex-col justify-center items-center pb-10'>
                 <h1 className='text-3xl'>💪</h1>
-                <p className="font-bold pt-5">
+                <p className="font-bold text-3xl pt-5">
                     {SITE_CONFIG.name}
                 </p>
                 <p>{SITE_CONFIG.description}</p>

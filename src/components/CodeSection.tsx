@@ -18,7 +18,7 @@ export default async function CodeSection() {
         <>
             <ResizablePanelGroup
                 direction="horizontal"
-                className="rounded-lg border"
+                className="rounded-lg border border-gray-800"
             >
                 <ResizablePanel className="overflow-y-scroll" defaultSize={50}>
                     <div className="h-full p-5 overflow-y-auto">
