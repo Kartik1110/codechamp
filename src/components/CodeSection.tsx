@@ -5,6 +5,7 @@ import {
 } from "@/components/ui/resizable"
 import { NotionRenderer } from "@/components/NotionRender"
 import { NotionAPI } from 'notion-client'
+import CodeEditor from "./CodeEditor"
 
 const api = new NotionAPI()
 
@@ -29,8 +30,8 @@ export default async function CodeSection() {
                 <ResizablePanel defaultSize={50}>
                     <ResizablePanelGroup direction="vertical">
                         <ResizablePanel defaultSize={25}>
-                            <div className="flex h-full items-center justify-center p-6">
-                                <span className="font-semibold text-primary">Two</span>
+                            <div className="h-full p-5 overflow-y-auto">
+                                <CodeEditor />
                             </div>
                         </ResizablePanel>
                         <ResizableHandle />
