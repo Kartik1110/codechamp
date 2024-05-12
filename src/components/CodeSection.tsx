@@ -6,6 +6,7 @@ import {
 import { NotionRenderer } from "@/components/NotionRender"
 import { NotionAPI } from 'notion-client'
 import CodeEditor from "./CodeEditor"
+import CodeSectionNav from "@/components/CodeSectionNav"
 
 const api = new NotionAPI()
 
@@ -22,6 +23,7 @@ export default async function CodeSection() {
                 className="rounded-lg border border-gray-800"
             >
                 <ResizablePanel className="overflow-y-scroll" defaultSize={50}>
+                    <CodeSectionNav tabs={[{ href: "/problem/1", label: "Description" }, { href: "/submissions", label: "Submissions" }]} />
                     <div className="h-full p-5 overflow-y-auto">
                         {page && <NotionRenderer recordMap={page} />}
                     </div>
@@ -30,7 +32,7 @@ export default async function CodeSection() {
                 <ResizablePanel defaultSize={50}>
                     <ResizablePanelGroup direction="vertical">
                         <ResizablePanel defaultSize={25}>
-                            <div className="h-full p-5 overflow-y-auto">
+                            <div className="h-full overflow-y-auto">
                                 <CodeEditor />
                             </div>
                         </ResizablePanel>

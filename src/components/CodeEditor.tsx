@@ -17,22 +17,25 @@ export default function CodeEditor() {
 
     return (
         <div className="h-full">
-            <LanguageSelector languages={[{
-                id: 1,
-                value: "javascript",
-                label: "JavaScript",
-            }, {
-                id: 2,
-                value: "typescript",
-                label: "TypeScript",
-            }, {
-                id: 3,
-                value: "python",
-                label: "Python",
-            }
-            ]} setLanguage={setLanguage} />
+            <nav className="flex justify-between items-center p-2 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-800">
+                <LanguageSelector languages={[{
+                    id: 1,
+                    value: "javascript",
+                    label: "JavaScript",
+                }, {
+                    id: 2,
+                    value: "typescript",
+                    label: "TypeScript",
+                }, {
+                    id: 3,
+                    value: "python",
+                    label: "Python",
+                }
+                ]} setLanguage={setLanguage} />
+            </nav>
             <Editor
-                height={"calc(100% - 2.4rem)"}
+            className="p-2"
+                height={"calc(100% - 3.8rem)"}
                 value={codeValue[language as keyof typeof codeValue]}
                 theme="vs-dark"
                 onMount={() => { }}
@@ -50,7 +53,7 @@ export default function CodeEditor() {
 
 function LanguageSelector({ languages, setLanguage }: { languages: { id: number, value: string, label: string }[], setLanguage: (value: string) => void }) {
     return (
-        <div className="pb-2 flex">
+        <div className="">
             <Select
                 onValueChange={(value) => {
                     setLanguage(value);
